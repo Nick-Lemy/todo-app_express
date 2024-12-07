@@ -1,0 +1,24 @@
+{
+  "name": "todo-app_express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nick-Lemy/todo-app_express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nick-Lemy/todo-app_express/issues"
+  },
+  "homepage": "https://github.com/Nick-Lemy/todo-app_express#readme",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mysql2": "^3.11.5"
+  }
+}
