@@ -36,11 +36,24 @@ app.delete("/delete", (req, res) => {
     res.json({ response: "Task successfully deleted!" });
   } catch (err) {
     console.log(err);
-    res.status(404).send({ error: err });
+    res.status(404).json({ error: err });
   }
 });
 
-app.post("/update");
+app.post("/update", (req, res) => {
+  try {
+    let oldTitle = req.body.old_title;
+    let newTitle = req.body.new_title;
+    let newDescription = req.body.new_description;
+    console.log(oldTitle, newTitle, newDescription);
+
+    todosModel.updateTask(oldTitle, newTitle, newDescription);
+    res.json({ response: "Task updated successfully!" });
+  } catch (err) {
+    console.error(err);
+    res.status(404).json({ error: err });
+  }
+});
 
 // Listener
 app.listen(5500, () => {
