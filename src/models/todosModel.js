@@ -15,10 +15,14 @@ const addNewTask = async (title, description) => {
 
 const deleteTask = async (title) => {
   const [result] = await pool.query("DELETE FROM dos WHERE title = ?", [title]);
-  console.log(title);
-
-  console.log(result);
-
-  return "ok";
+  return result;
 };
-module.exports = { displayTable, addNewTask, deleteTask };
+
+const updateTask = async (oldTitle, newTitle, newDescription) => {
+  const [result] = await pool.query(
+    "UPDATE dos SET title = ?, description = ? WHERE title = ?",
+    [newTitle, newDescription, oldTitle]
+  );
+  return result;
+};
+module.exports = { displayTable, addNewTask, deleteTask, updateTask };
