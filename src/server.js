@@ -18,6 +18,8 @@ app.get("/", async (req, res) => {
 app.post("/add", (req, res) => {
   try {
     let { title, description } = req.body;
+    console.log(title, description);
+
     todosModel.addNewTask(title, description);
     res.status(200).json({ response: "Task successfully added!" });
   } catch (err) {
@@ -27,10 +29,14 @@ app.post("/add", (req, res) => {
 
 app.post("/delete", (req, res) => {
   try {
-    let ok = req.body.title.toString();
-    todosModel.deleteTask("Test2 ");
+    let title = req.body["title"];
+    console.log(title);
+
+    todosModel.deleteTask(title);
     res.json({ response: "Task successfully deleted!" });
   } catch (err) {
+    console.log(err);
+
     res.status(404).send({ error: err });
   }
 });
