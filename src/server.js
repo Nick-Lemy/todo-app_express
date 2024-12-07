@@ -40,6 +40,7 @@ app.delete("/delete", (req, res) => {
   }
 });
 
+// Update a task
 app.post("/update", (req, res) => {
   try {
     let oldTitle = req.body.old_title;
