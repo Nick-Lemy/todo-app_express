@@ -8,7 +8,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Error Handler Middleware
 // Display rows of my database
 app.get("/", todosControllers.displayTodos);
 
@@ -21,10 +20,12 @@ app.delete("/delete", todosControllers.deleteTodo);
 // Update a task
 app.post("/update", todosControllers.updateTodo);
 
+// Error Handler Middleware
 app.use((req, res, next, err) => {
   console.error(err);
   res.status(500).json({ error: "Internal Server Error" });
 });
+
 // Listener
 app.listen(5500, () => {
   console.log("listening on http://localhost:5500/");
