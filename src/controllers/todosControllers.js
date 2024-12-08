@@ -9,6 +9,16 @@ const displayTodos = async (req, res, next) => {
   }
 };
 
+const displayOneTodo = async (req, res, next) => {
+  try {
+    let rows = await todosModel.displayTable();
+    let result = rows.find((element) => element.id === parseInt(req.params.id));
+    res.status(200).json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const addTodo = async (req, res, next) => {
   try {
     let { title, description } = req.body;
@@ -43,4 +53,17 @@ const updateTodo = async (req, res, next) => {
   }
 };
 
-module.exports = { displayTodos, addTodo, deleteTodo, updateTodo };
+module.exports = {
+  displayTodos,
+  addTodo,
+  deleteTodo,
+  updateTodo,
+  displayOneTodo,
+};
+
+// let test = [
+//   { id: 11, name: "Nick" },
+//   { id: 12, name: "Aline" },
+//   { id: 3, name: "France" },
+// ];
+// console.log(test.find((e) => e.id === "3"));
