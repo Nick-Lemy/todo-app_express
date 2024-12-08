@@ -23,7 +23,6 @@ const updateTask = async (oldTitle, newTitle, newDescription) => {
     "UPDATE dos SET title = ?, description = ? WHERE title = ?",
     [newTitle, newDescription, oldTitle]
   );
-  console.log(result);
   return result;
 };
 

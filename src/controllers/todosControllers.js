@@ -32,8 +32,13 @@ const addTodo = async (req, res, next) => {
 const deleteTodo = async (req, res, next) => {
   try {
     let title = req.body["title"];
-    todosModel.deleteTask(title);
-    res.json({ response: "Task successfully deleted!" });
+    let result = await todosModel.deleteTask(title);
+    res.json({
+      response:
+        result.affectedRows > 0
+          ? "Task successfully deleted!"
+          : "Task does not exist",
+    });
   } catch (err) {
     next(err);
   }
@@ -44,10 +49,13 @@ const updateTodo = async (req, res, next) => {
     let oldTitle = req.body.old_title;
     let newTitle = req.body.new_title;
     let newDescription = req.body.new_description;
-    console.log(oldTitle, newTitle, newDescription);
-
-    todosModel.updateTask(oldTitle, newTitle, newDescription);
-    res.json({ response: "Task updated successfully!" });
+    let result = todosModel.updateTask(oldTitle, newTitle, newDescription);
+    res.json({
+      response:
+        result.affectedRows > 0
+          ? "Task updated successfully!"
+          : "Task does not exist",
+    });
   } catch (err) {
     next(err);
   }
