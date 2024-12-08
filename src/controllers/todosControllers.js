@@ -60,10 +60,3 @@ module.exports = {
   updateTodo,
   displayOneTodo,
 };
-
-// let test = [
-//   { id: 11, name: "Nick" },
-//   { id: 12, name: "Aline" },
-//   { id: 3, name: "France" },
-// ];
-// console.log(test.find((e) => e.id === "3"));
