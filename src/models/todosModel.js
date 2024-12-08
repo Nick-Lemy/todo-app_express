@@ -24,7 +24,7 @@ const updateTask = async (oldTitle, newTitle, newDescription) => {
     [newTitle, newDescription, oldTitle]
   );
   console.log(result);
-
   return result;
 };
+
 module.exports = { displayTable, addNewTask, deleteTask, updateTask };

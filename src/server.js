@@ -1,6 +1,7 @@
 "use strict";
 const express = require("express");
 const todosRoutes = require("./routes/todosRoutes");
+const errorHandler = require("./middlewares/errorHandler");
 
 // const errorHandler = require("./middlewares/errorHandler");
 
@@ -13,10 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", todosRoutes);
 
 // Error Handler Middleware
-app.use((req, res, next, err) => {
-  console.error(err);
-  res.status(500).json({ error: "Internal Server Error" });
-});
+app.use(errorHandler);
 
 // Listener
 app.listen(5500, () => {
